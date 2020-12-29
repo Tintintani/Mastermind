@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-void intToArray(int numToConvert, int numOfDigits, int *arr); // function prototype
-void arraySort(int *arr, int length);
+void intToArray(int numToConvert, int numOfDigits, int arr[]); // function prototype
+void arraySort(int arr[], int length);
+int checkRepeat(int num, int numofdig, int maxValue, int minValue, int numToGuessArr[]);
 
 int main()
 {
@@ -94,7 +95,7 @@ int main()
     int correctPlace = 0;
     do
     {
-      printf("Enter guess %d", (i+1));
+      printf("Enter guess %d: \n", (i+1));
       scanf("%d", &guess);
     } while(!(guess>minValue && guess<maxValue));
     
@@ -128,7 +129,7 @@ int main()
       break;
     }
     //Print hints after guess
-    printf("Guess %d: \n", j);
+    printf("Guess %d:           \n", j);
     printf("Correct Digits:   %d\n", correctDigit);
     printf("Correct Position: %d\n", correctPlace);
   }
@@ -142,30 +143,45 @@ int main()
   return 0;
 }
 
-void intToArray(int numToConvert, int numOfDigits, int *arr)
+void intToArray(int numToConvert, int numOfDigits, int arr[])
 {
   int temp = numToConvert;
   for (int i = 0; i < numOfDigits; i++)
   {
-    *arr = temp % 10;
+    arr[i] = temp % 10;
     temp /= 10;
-    arr++;
   }
 }
 
-void arraySort(int *arr, int length)
+void arraySort(int arr[], int length)
 {
   for (int i = 0; i < length; i++)
   {
     for (int j = 0; j < length; j++)
     {
       int temp;
-      if (*(arr + i) > *(arr + j))
+      if (arr[i] > arr[j])
       {
-        temp = *(arr + i);
-        *(arr + i) = *(arr + j);
-        *(arr + j) = temp;
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
       }
     }
   }
+}
+int checkRepeat(int numToGuess, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]) {
+  numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
+      int repeat = 0;
+      int tempNumToGuessArr[numOfDigits];
+      intToArray(numToGuess, numOfDigits, tempNumToGuessArr);
+      arraySort(tempNumToGuessArr, numOfDigits);
+      for (int i = 0; i < numOfDigits - 1; i++)
+      {
+        if (!(tempNumToGuessArr[i + 1] < tempNumToGuessArr[i]))
+        {
+          repeat++;
+          break;
+        }
+      }
+      return repeat;
 }
