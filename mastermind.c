@@ -67,7 +67,7 @@ int main()
     numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
   }
 
-  printf("%d\n", numToGuess); // Checking number
+  // printf("%d\n", numToGuess); // Checking number
   if (userInpRepeat == 'y')
   {
     printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
