@@ -14,7 +14,7 @@ int main()
   int guessArr[numOfDigits], numToGuessArr[numOfDigits];
 
   //For repeated digits check
-  int repeat;
+  int repeat = 0;
   char userInpRepeat = '2';
 
   //Setting number of digits in number
@@ -47,25 +47,15 @@ int main()
 
   if (userInpRepeat = 'n')
   {
+    repeat = 0;
     do
     {
       numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
-      repeat = 0;
-      int tempNumToGuessArr[numOfDigits];
-      intToArray(numToGuess, numOfDigits, tempNumToGuessArr);
-      arraySort(tempNumToGuessArr, numOfDigits);
-      for (int i = 0; i < numOfDigits - 1; i++)
-      {
-        if (!(tempNumToGuessArr[i + 1] < tempNumToGuessArr[i]))
-        {
-          repeat++;
-          break;
-        }
-      }
-    } while (repeat != 0);
+    } while (checkRepeat(numToGuess, numOfDigits, minValue, minValue, numToGuessArr) != 0);
   }
   else
   {
+    repeat = 1;
     numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
   }
 
@@ -97,7 +87,7 @@ int main()
     {
       printf("Enter guess %d: \n", (i+1));
       scanf("%d", &guess);
-    } while(!(guess>minValue && guess<maxValue));
+    } while(!(guess>minValue && guess<maxValue && checkRepeat(guess, numOfDigits, maxValue, minValue, guessArr) == repeat));
     
 
     //Converting guess and numtoguess to array for comparison of digits
@@ -140,6 +130,9 @@ int main()
     printf("The number was %d\n", numToGuess);
   }
 
+  fflush(stdin);
+  getchar();
+  
   return 0;
 }
 
@@ -169,12 +162,11 @@ void arraySort(int arr[], int length)
     }
   }
 }
-<<<<<<< HEAD
-int checkRepeat(int numToGuess, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]) {
-  numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
+
+int checkRepeat(int num, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]){
       int repeat = 0;
       int tempNumToGuessArr[numOfDigits];
-      intToArray(numToGuess, numOfDigits, tempNumToGuessArr);
+      intToArray(num, numOfDigits, tempNumToGuessArr);
       arraySort(tempNumToGuessArr, numOfDigits);
       for (int i = 0; i < numOfDigits - 1; i++)
       {
@@ -186,5 +178,3 @@ int checkRepeat(int numToGuess, int numOfDigits, int maxValue, int minValue, int
       }
       return repeat;
 }
-=======
->>>>>>> bbd6900e06b7eb140ca717eb0a52aab14f038d6f
