@@ -169,6 +169,7 @@ void arraySort(int arr[], int length)
     }
   }
 }
+<<<<<<< HEAD
 int checkRepeat(int numToGuess, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]) {
   numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
       int repeat = 0;
@@ -185,3 +186,5 @@ int checkRepeat(int numToGuess, int numOfDigits, int maxValue, int minValue, int
       }
       return repeat;
 }
+=======
+>>>>>>> bbd6900e06b7eb140ca717eb0a52aab14f038d6f
