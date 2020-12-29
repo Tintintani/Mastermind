@@ -36,6 +36,7 @@ int main()
   while (!(userInpRepeat == 'y' || userInpRepeat == 'n'))
   {
     printf("Can the number have repeated digits?(y/n)\n");
+    fflush(stdin);
     scanf("%c", &userInpRepeat);
     // printf("%c", userInpRepeat); // Checking userInpRepeat
   }
@@ -67,7 +68,7 @@ int main()
     numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
   }
 
-  printf("%d\n", numToGuess); // Checking number
+  // printf("%d\n", numToGuess); // Checking number
   if (userInpRepeat == 'y')
   {
     printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
@@ -91,7 +92,12 @@ int main()
   {
     int correctDigit = 0;
     int correctPlace = 0;
-    scanf("%d", &guess);
+    do
+    {
+      printf("Enter guess %d", (i+1));
+      scanf("%d", &guess);
+    } while(!(guess>minValue && guess<maxValue));
+    
 
     //Converting guess and numtoguess to array for comparison of digits
 
