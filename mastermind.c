@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-void intToArray(int numToConvert, int numOfDigits, int arr[]); // function prototype
+// function prototypes
+void intToArray(int numToConvert, int numOfDigits, int arr[]); 
 void arraySort(int arr[], int length);
 int checkRepeat(int num, int numofdig, int maxValue, int minValue, int numToGuessArr[]);
 
@@ -136,6 +137,7 @@ int main()
   return 0;
 }
 
+// Function to convert integer into array of its digits
 void intToArray(int numToConvert, int numOfDigits, int arr[])
 {
   int temp = numToConvert;
@@ -146,6 +148,7 @@ void intToArray(int numToConvert, int numOfDigits, int arr[])
   }
 }
 
+//Function to sort array
 void arraySort(int arr[], int length)
 {
   for (int i = 0; i < length; i++)
@@ -163,6 +166,7 @@ void arraySort(int arr[], int length)
   }
 }
 
+//Function to check number for repeated digits
 int checkRepeat(int num, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]){
       int repeat = 0;
       int tempNumToGuessArr[numOfDigits];
