@@ -44,36 +44,35 @@ int main()
   }
 
   //Setting random number
+  
   srand(time(0));
-
-  if (userInpRepeat = 'n')
+  if (userInpRepeat == 'n')
   {
     repeat = 0;
     do
     {
+      
       numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
-    } while (checkRepeat(numToGuess, numOfDigits, minValue, minValue, numToGuessArr) != 0);
+    } while (checkRepeat(numToGuess, numOfDigits != 0));
+    printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
   }
   else
   {
     repeat = 1;
     numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
+    printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
   }
 
   // printf("%d\n", numToGuess); // Checking number
-  if (userInpRepeat == 'y')
-  {
-    printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
-  }
-  else if (userInpRepeat == 'n')
-  {
-    printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
-  }
-  //else is not requirement. kekek.
-  else
-  {
-    printf("Input should be 'y' or 'n'");
-  }
+  // if (userInpRepeat == 'y')
+  // {
+  //   printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
+  // }
+  // else// if (userInpRepeat == 'n')
+  // {
+  //   printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
+  // }
+
 
   //Setting number of attempts
   printf("How many attempts would you like to guess the number?\n");
@@ -89,7 +88,7 @@ int main()
     {
       printf("Enter guess %d: \n", (i+1));
       scanf("%d", &guess);
-    } while(!(guess>minValue && guess<maxValue && checkRepeat(guess, numOfDigits, maxValue, minValue, guessArr) == repeat));
+    } while(!(guess>minValue && guess<maxValue && checkRepeat(guess, numOfDigits) == repeat));
     //guess can be equal to max and min right?
 
     //Converting guess and numtoguess to array for comparison of digits
@@ -166,7 +165,7 @@ void arraySort(int arr[], int length)
     }
   }
 }
-//Bois why is "maxValue", "minValue" & "numToGuessArr" passed? you are not even using them
+
 int checkRepeat(int num, int numOfDigits){
       int repeat = 0;
       int tempNumToGuessArr[numOfDigits];
