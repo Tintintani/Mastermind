@@ -5,7 +5,7 @@
 // function prototypes
 void intToArray(int numToConvert, int numOfDigits, int arr[]); 
 void arraySort(int arr[], int length);
-int checkRepeat(int num, int numofdig, int maxValue, int minValue, int numToGuessArr[]);
+int checkRepeat(int num, int numofdig);
 
 int main()
 {
@@ -166,13 +166,8 @@ void arraySort(int arr[], int length)
     }
   }
 }
-<<<<<<< HEAD
-
-//Function to check number for repeated digits
-=======
 //Bois why is "maxValue", "minValue" & "numToGuessArr" passed? you are not even using them
->>>>>>> 8c129cecb52869deb4cce589fd2271e34fe3ae97
-int checkRepeat(int num, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]){
+int checkRepeat(int num, int numOfDigits){
       int repeat = 0;
       int tempNumToGuessArr[numOfDigits];
       intToArray(num, numOfDigits, tempNumToGuessArr);
