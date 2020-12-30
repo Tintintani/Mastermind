@@ -69,6 +69,7 @@ int main()
   {
     printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
   }
+  //else is not requirement. kekek.
   else
   {
     printf("Input should be 'y' or 'n'");
@@ -89,7 +90,7 @@ int main()
       printf("Enter guess %d: \n", (i+1));
       scanf("%d", &guess);
     } while(!(guess>minValue && guess<maxValue && checkRepeat(guess, numOfDigits, maxValue, minValue, guessArr) == repeat));
-    
+    //guess can be equal to max and min right?
 
     //Converting guess and numtoguess to array for comparison of digits
 
@@ -165,8 +166,12 @@ void arraySort(int arr[], int length)
     }
   }
 }
+<<<<<<< HEAD
 
 //Function to check number for repeated digits
+=======
+//Bois why is "maxValue", "minValue" & "numToGuessArr" passed? you are not even using them
+>>>>>>> 8c129cecb52869deb4cce589fd2271e34fe3ae97
 int checkRepeat(int num, int numOfDigits, int maxValue, int minValue, int numToGuessArr[]){
       int repeat = 0;
       int tempNumToGuessArr[numOfDigits];
@@ -182,3 +187,6 @@ int checkRepeat(int num, int numOfDigits, int maxValue, int minValue, int numToG
       }
       return repeat;
 }
+
+
+//Yaar yeh toh tune good boi wala kaam kardiya waise... :thumbs_up:
