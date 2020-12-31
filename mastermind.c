@@ -3,7 +3,7 @@
 #include <time.h>
 
 // function prototypes
-void intToArray(int numToConvert, int numOfDigits, int arr[]); 
+void intToArray(int numToConvert, int numOfDigits, int arr[]);
 void arraySort(int arr[], int length);
 int checkRepeat(int num, int numofdig);
 
@@ -44,14 +44,14 @@ int main()
   }
 
   //Setting random number
-  
+
   srand(time(0));
   if (userInpRepeat == 'n')
   {
     repeat = 0;
     do
     {
-      
+
       numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
     } while (checkRepeat(numToGuess, numOfDigits != 0));
     printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
@@ -73,7 +73,6 @@ int main()
   //   printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
   // }
 
-
   //Setting number of attempts
   printf("How many attempts would you like to guess the number?\n");
   scanf("%d", &attempts);
@@ -84,11 +83,24 @@ int main()
   {
     int correctDigit = 0;
     int correctPlace = 0;
-    do
+
+    if (repeat == 0)
     {
-      printf("Enter guess %d: \n", (i+1));
-      scanf("%d", &guess);
-    } while(!(guess>minValue && guess<maxValue && checkRepeat(guess, numOfDigits) == repeat));
+      do
+      {
+        printf("Enter guess %d: \n", (i + 1));
+        scanf("%d", &guess);
+      } while (!(guess > minValue && guess < maxValue && checkRepeat(guess, numOfDigits) == 0));
+    }
+    else
+    {
+      do
+      {
+        printf("Enter guess %d: \n", (i + 1));
+        scanf("%d", &guess);
+      } while (!(guess > minValue && guess < maxValue));
+    }
+
     //guess can be equal to max and min right?
 
     //Converting guess and numtoguess to array for comparison of digits
@@ -120,7 +132,7 @@ int main()
       break;
     }
     //Print hints after guess
-    printf("Guess %d:           \n", j);
+    printf("Guess %d:          %d\n", j, guess);
     printf("Correct Digits:   %d\n", correctDigit);
     printf("Correct Position: %d\n", correctPlace);
   }
@@ -133,7 +145,7 @@ int main()
 
   fflush(stdin);
   getchar();
-  
+
   return 0;
 }
 
@@ -166,21 +178,21 @@ void arraySort(int arr[], int length)
   }
 }
 
-int checkRepeat(int num, int numOfDigits){
-      int repeat = 0;
-      int tempNumToGuessArr[numOfDigits];
-      intToArray(num, numOfDigits, tempNumToGuessArr);
-      arraySort(tempNumToGuessArr, numOfDigits);
-      for (int i = 0; i < numOfDigits - 1; i++)
-      {
-        if (!(tempNumToGuessArr[i + 1] < tempNumToGuessArr[i]))
-        {
-          repeat++;
-          break;
-        }
-      }
-      return repeat;
+int checkRepeat(int num, int numOfDigits)
+{
+  int repeat = 0;
+  int tempNumToGuessArr[numOfDigits];
+  intToArray(num, numOfDigits, tempNumToGuessArr);
+  arraySort(tempNumToGuessArr, numOfDigits);
+  for (int i = 0; i < numOfDigits - 1; i++)
+  {
+    if (!(tempNumToGuessArr[i + 1] < tempNumToGuessArr[i]))
+    {
+      repeat++;
+      break;
+    }
+  }
+  return repeat;
 }
-
 
 //Yaar yeh toh tune good boi wala kaam kardiya waise... :thumbs_up:
