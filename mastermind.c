@@ -32,7 +32,6 @@ int main()
   }
   minValue = maxValue / 10;
   maxValue--;
-  // printf("min is %d and max is %d\n", minValue, maxValue); // checking min and max
 
   //Setting whether digits can repeat
   while (!(userInpRepeat == 'y' || userInpRepeat == 'n'))
@@ -40,11 +39,9 @@ int main()
     printf("Can the number have repeated digits?(y/n)\n");
     fflush(stdin);
     scanf("%c", &userInpRepeat);
-    // printf("%c", userInpRepeat); // Checking userInpRepeat
   }
 
   //Setting random number
-
   srand(time(0));
   if (userInpRepeat == 'n')
   {
@@ -62,16 +59,6 @@ int main()
     numToGuess = (rand() % (maxValue - minValue + 1)) + minValue;
     printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
   }
-
-  // printf("%d\n", numToGuess); // Checking number
-  // if (userInpRepeat == 'y')
-  // {
-  //   printf("A random number with %d digits with or without repeated digits has been chosen\n", numOfDigits);
-  // }
-  // else// if (userInpRepeat == 'n')
-  // {
-  //   printf("A random number with %d digits without repeated digits has been chosen\n", numOfDigits);
-  // }
 
   //Setting number of attempts
   printf("How many attempts would you like to guess the number?\n");
@@ -98,13 +85,10 @@ int main()
       {
         printf("Enter guess %d: \n", (i + 1));
         scanf("%d", &guess);
-      } while (!(guess > minValue && guess < maxValue));
+      } while (!(guess >= minValue && guess <= maxValue));
     }
 
-    //guess can be equal to max and min right?
-
     //Converting guess and numtoguess to array for comparison of digits
-
     intToArray(numToGuess, numOfDigits, numToGuessArr);
     intToArray(guess, numOfDigits, guessArr);
 
@@ -178,6 +162,7 @@ void arraySort(int arr[], int length)
   }
 }
 
+//Function to check for repeated digits in number
 int checkRepeat(int num, int numOfDigits)
 {
   int repeat = 0;
@@ -194,5 +179,3 @@ int checkRepeat(int num, int numOfDigits)
   }
   return repeat;
 }
-
-//Yaar yeh toh tune good boi wala kaam kardiya waise... :thumbs_up:
